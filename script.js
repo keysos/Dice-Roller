@@ -88,6 +88,7 @@ function generateDice (number) {
         return;
     }
 
+    diceSum.textContent += sum;
     toggleResults(true);
 }
 
