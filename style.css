@@ -71,6 +71,7 @@ p {
     background-color: var(--blue-bell);
     min-height: 30px;
     min-width: 100px;
+    cursor: pointer;
 }
 
 .results {
