@@ -2,6 +2,7 @@ const inputDice = document.getElementById("input-number");
 const diceContainer = document.querySelector(".dice-container");
 const rollDiceBtn = document.getElementById("roll-dice");
 const results = document.getElementById("dice-results");
+const diceSum = document.getElementById("dice-sum");
 
 const diceFaces = {
     1: [[2, 2]],
@@ -45,15 +46,25 @@ const diceFaces = {
 
 rollDiceBtn.addEventListener("click", () => {
     diceContainer.innerHTML = "";
-    results.textContent = "Dice results: "
-    generateDice(Number(inputDice.value));
+    results.textContent = "Dice results: ";
+    diceSum.textContent = "Sum of all dices: ";
+    generateDice(Math.abs(Number(inputDice.value)));
 })
 
 function randomNumber () {
     return Math.floor(Math.random() * 6) + 1;
 }
 
+function toggleResults(show) {
+    const display = show ? "block" : "none";
+
+    diceSum.style.display = display;
+    results.style.display = display;
+}
+
 function generateDice (number) {
+
+    let sum = 0;
 
     for (let i = 0; i < number; i++) {
         const dice = document.createElement("div");
@@ -61,6 +72,7 @@ function generateDice (number) {
         diceContainer.appendChild(dice);
 
         const diceValue = randomNumber();
+        sum += diceValue;
 
         const positions = diceFaces[diceValue];
 
@@ -71,7 +83,12 @@ function generateDice (number) {
         results.textContent += diceValue + ", ";
     }
 
-    results.textContent = results.textContent.slice(0, -2);
+    if (number === 0) {
+        toggleResults(false);
+        return;
+    }
+
+    toggleResults(true);
 }
 
 function createDots (dice, row, col, color) {
