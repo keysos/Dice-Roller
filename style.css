@@ -110,3 +110,32 @@ p {
     justify-self: center;
     align-self: center;
 }
+
+@media (max-width: 480px) {
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .dice-container {
+        grid-template-columns: repeat(auto-fit, 80px);
+    }
+    
+    .input-container {
+        flex-direction: column;
+    }
+
+    .results {
+        font-size: 1.1rem;
+    }
+
+    .dice {
+        width: 80px;
+        height: 80px;
+    }
+
+    .dot {
+        width: 14px;
+        height: 14px;
+    }
+}
