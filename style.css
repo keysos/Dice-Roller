@@ -72,8 +72,16 @@ p {
     min-height: 30px;
     min-width: 100px;
     cursor: pointer;
+    transition: transform 0.08s ease, background-color 0.02s ease;
 }
 
+button:hover {
+    background-color: var(--baltic-blue);
+}
+
+button:active {
+    transform: scale(0.98);
+}
 .results {
     display: none;
     font-size: 1.2rem;
